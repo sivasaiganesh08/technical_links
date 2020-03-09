@@ -1,0 +1,98 @@
+###Node.js binary distributions are available from NodeSource.
+https://github.com/nodesource/distributions/blob/master/README.md#rpminstall
+
+
+#Node.js Installation
+
+https://github.com/nodesource/distributions/blob/master/README.md
+
+# As root
+curl -sL https://rpm.nodesource.com/setup_13.x | bash -
+
+## Run `sudo yum install -y nodejs` to install Node.js 13.x and npm.
+
+### Check versions after installation
+node -v
+npm -v
+
+### npm install -g pm2 http-server
+pm2 - To run and manage node.js applications
+-g - globally for all users
+
+echo "hello-world" > index.html
+
+### To run HTTP server
+
+http-server
+
+
+## You may also need development tools to build native addons:
+     sudo yum install gcc-c++ make
+## To install the Yarn package manager, run:
+     curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+     sudo yum install yarn
+
+
+# No root privileges 
+curl -sL https://rpm.nodesource.com/setup_13.x | sudo bash -
+
+
+Optional: install build tools
+
+To compile and install native addons from npm you may also need to install build tools:
+
+yum install gcc-c++ make
+# or: yum groupinstall 'Development Tools'
+
+
+
+node -v 	                    #To check version
+
+npx create-react-app <app-name>     #Create new react app with multiple files, Invoke NPM package manager
+
+
+# Directory Files
+src                                 #Contains the build files
+package.json                        #Basically executor where we store all the commands and dependents
+
+
+
+npm start                           # calls the start part of the package.json(contains scripts)
+
+
+
+
+
+
+
+####Dockerfile
+
+
+#base image
+FROM node
+
+# set working directory
+RUN mkdir /usr/src/app
+#copy all files from current directory to docker
+COPY . /usr/src/app
+
+WORKDIR /usr/src/app
+
+# add `/usr/src/app/node_modules/.bin` to $PATH
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+
+# install and cache app dependencies
+RUN yarn
+
+# start app
+CMD ["npm", "start"]
+
+
+docker buid -t <image-name> . # Builds the docker image
+
+docker run -itd -p 3000:3000 <image-name>   # Run Container
+
+
+
+
+
