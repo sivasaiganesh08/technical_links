@@ -6,7 +6,11 @@ Yum install nginx –y
 Systemctl start nginx
 Systemctl status nginx
 Systemctl enable nginx
+
+
+
 Nginx Configuration
+
 Path for main configuration file /etc/nginx/nginx.conf
 Comment the server blocks in nginx.conf file
 Create a new server block files in the /etc/nginx/conf.d/ path
