@@ -1,0 +1,29 @@
+open-source metric based monitoring system. 
+It has a simple but powerful data modelling and a query language that help you analyse your application and infrastructure performance.
+
+It is similar like splunk and ELK but it is monitoring tool along with data analysis, that's make it more powerful than any other monitoring system.
+
+### Reference video
+https://www.youtube.com/watch?v=6EFldoe9dyI&list=PLoRLk9325TJLaKTTeJYLLctA_ibGnp58_
+
+### Github link
+https://github.com/vipin-k/Prometheus-Tutorial
+
+## To validate or check prometheus config file
+promtool check config prometheus.yml 
+
+
+vi /etc/yum.repos.d/grafana.repo
+    2  yum repolist
+    3  yum install grafana -y
+    4  rpm -qa | grep grafana
+    5  rpm -qi grafana
+    6  systemctl daemon-reload
+    7  systemctl start grafana-server
+    8  systemctl enable grafana-server
+    9  systemctl status grafana-server
+   10  netstat -tunlp
+   11  firewall-cmd --add-port=3000/tcp permanent
+   12  firewall-cmd --add-port=3000/tcp --permanent
+   13  firewall-cmd --reload
+   14  systemctl status grafana
