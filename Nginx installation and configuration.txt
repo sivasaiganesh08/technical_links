@@ -1,0 +1,31 @@
+Nginx Installation
+
+Yum update –y
+Yum install epel-release
+Yum install nginx –y
+Systemctl start nginx
+Systemctl status nginx
+Systemctl enable nginx
+Nginx Configuration
+Path for main configuration file /etc/nginx/nginx.conf
+Comment the server blocks in nginx.conf file
+Create a new server block files in the /etc/nginx/conf.d/ path
+Name the file with the domain name for easy identification
+Create domain.conf in conf.d directory
+Example:
+example.conf
+
+upstream example { 
+server localhost:8080;
+ } 
+# This server accepts all traffic to port 80 and passes it to the upstream. 
+# Notice that the upstream name and the proxy_pass need to match. 
+server { 
+listen 80; 
+server_name example.com;
+location / { 
+proxy_pass http://example; 
+} 
+}
+
+
