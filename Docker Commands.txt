@@ -1,0 +1,92 @@
+### Basic Commands
+docker pull <image-name>
+docker images
+docker ps -a
+docker ps -qa
+docker rmi <image-name or id>
+docker rm <container-name or id>
+docker rm -f $(docker ps -qa)
+docker rmi $(docker images)
+docker system prune
+docker create network 
+docker network ls
+docker network inspect
+docker logs <container-id>
+docker run -itd -p externalport(host):internalport(container) <container-id>
+docker exec <container-id> /bin/bash (or) sh (or) /bin/sh
+docker attach <container-id>
+docker build -t <tag-name>
+docker-compose up -d
+docker compose down
+docker tag <image-name> <reponame/image-name>
+docker push <repo-name/image-name>
+
+
+
+
+docker stop $(docker ps -q)docker rm $(docker ps -a -q)  //stop and remove all the running containers
+
+docker volume rm logdata                                //remove the logdata volume
+
+docker volume prune                                                        //Prune will remove all unused local volumes on the container host
+
+
+### mount a bind mount to a container
+
+docker run –it --name bindmount -v c:\data:c:\shareddata microsoft/windowsservercore powershell
+
+docker run -it --name bindmount --mount type=bind,source=c:\data,target=c:\shareddata microsoft/windowsservercore powershell
+
+
+##Note
+
+Notice the --mount flag uses key–value pairs separated by commas to specify the mount settings for this container, 
+making it easier to see exactly what they're configuring. 
+Also note that when using the ‑‑mount flag, the source folder must already exist on the container host. 
+When using -v, if the directory does not exist, the command will create it automatically. 
+If the directory does not exist when using ‑‑mount, Docker with throw an error.
+
+
+### Docker compose installation
+
+## Linux
+# Run this command to download the current stable release of Docker Compose:
+sudo curl -L "https://github.com/docker/compose/releases/download/1.25.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+#Apply executable permissions to the binary:
+sudo chmod +x /usr/local/bin/docker-compose
+
+
+## Windows
+
+For Windows and MAC it will come with default docker or docker toolkit
+
+### Docker compose commands
+
+docker-compose                          // Will display all the available commands for docker-compose
+docker-compose up -d
+docker-compose logs
+docker-compose build
+docker-compose build --no-cache   
+docker-compose stop
+docker-compose start
+docker-compose restart
+docker-compose ps
+docker-compose top
+docker-compose logs -f <service-name>              // follow for one particular service
+docker-compose logs -f                       // you can follow the flow
+  
+
+### Limitations
+ 
+ Works on a single host machine.
+ 
+ ### Notes
+ 
+ Service names can be used as hostname for communication.
+ 
+ Docker swarm will no support build section in docker compose. Accepts only pre build images
+ 
+ Deploy only works in swarm mode and ignored in compose 
+ 
+ 
