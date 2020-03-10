@@ -8,6 +8,14 @@ Systemctl status nginx
 Systemctl enable nginx
 
 
+Nginx Important Files and Directories
+
+The default server root directory (top level directory containing configuration files): /etc/nginx.
+The main Nginx configuration file: /etc/nginx/nginx.conf.
+Server block (virtual hosts) configurations can be added in: /etc/nginx/conf.d.
+The default server document root directory (contains web files): /usr/share/nginx/html.
+
+
 
 Nginx Configuration
 
